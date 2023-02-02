@@ -1,8 +1,7 @@
-from django.views.generic.base import TemplateView
-from django.views.generic.edit import FormView
 
 from feedback.forms import FeedbackForm
-
+from django.views.generic.edit import FormView
+from django.views.generic.base import TemplateView
 
 class FeedbackFormView(FormView):
     template_name = "feedback/feedback.html"
@@ -12,7 +11,6 @@ class FeedbackFormView(FormView):
     def form_valid(self, form):
         form.send_email()
         return super().form_valid(form)
-
 
 class SuccessView(TemplateView):
     template_name = "feedback/success.html"
